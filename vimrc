@@ -38,8 +38,6 @@ let g:pyflakes_use_quickfix = 0
 let g:miniBufExplForceSyntaxEnable=1
 let g:miniBufExplMapWindowNavVim=1
 
-let Tlist_WinWidth = 60
-
 set nocompatible
 set mouse=a
 set backspace=indent,eol,start
@@ -62,7 +60,7 @@ let mapleader = ","
 map Q gq
 map <leader>b :MBEbn<CR>
 map <leader>p :TMiniBufExplorer<cr>
-map <leader>t :TlistToggle<CR>
+map <leader>t :TagbarToggle<CR>
 map <leader>s :set spell<CR>
 map <leader>S :set nospell<CR>
 map <leader>m :call Put_modeline()<CR>
@@ -74,3 +72,4 @@ autocmd FileType ruby set ts=2 sw=2
 
 autocmd FileType ruby set tags+=~/.tags/ruby
 autocmd FileType python set tags+=~/.tags/python
+
