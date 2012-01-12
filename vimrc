@@ -1,4 +1,5 @@
 " init pathogen
+filetype off
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
