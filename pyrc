@@ -20,3 +20,5 @@ if os.path.exists(historyPath):
 atexit.register(save_history)
 
 del atexit, readline, rlcompleter, save_history, historyPath
+
+print ">>> ~/.pyrc loaded successfully"
