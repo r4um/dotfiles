@@ -80,3 +80,7 @@ function github-setup() {
 function rm-pyc() {
     find . -type f -name '*.pyc'  -print0 | xargs -0 rm -fv
 }
+
+function my-procs() {
+    ps -a -u $USER -o pid,ppid,nice,tty,start,%cpu,time,%mem,vsz,rss,stat,wchan,cmd --sort vsz
+}
