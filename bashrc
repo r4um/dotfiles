@@ -32,7 +32,6 @@ export XAUTHORITY=/home/cpk/.Xauthority
 export VISUAL=vim
 export CLICOLOR=1
 
-[ -z "$(which vimpager)" ] || export PAGER=vimpager 
 
 shopt -s histappend
 
@@ -65,6 +64,8 @@ case $TERM in
         PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
      ;;
 esac
+
+[ -z "$(which vimpager)" ] || export PAGER=vimpager 
 
 function github-setup() {
     [ -z $1 ] && echo "No token provided" && return
