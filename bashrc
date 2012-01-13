@@ -1,11 +1,16 @@
 #!/bin/bash
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-fi
+[ -z "$PS1" ] && return
 
 if [ -f /etc/profile ];then
     . /etc/profile
+fi
+
+if [ -e /usr/local/bin/brew ]; then
+    BREW_PREFIX=$(brew --prefix)
+    if [ -f $BREW_PREFIX/etc/bash_completion ]; then
+        . $BREW_PREFIX/etc/bash_completion
+    fi
 fi
 
 if [ -f /etc/bash_completion ];then
@@ -20,7 +25,6 @@ alias umount='umount -v'
 alias ipcalc='ipcalc.pl -n'
 alias vi='vim'
 alias gdb='gdb -q'
-alias grep='grep --color=auto'
 
 export PYTHONSTARTUP=~/.pystartup
 export GREP_COLOR=00\;35
@@ -31,12 +35,24 @@ export CLICOLOR=1
 
 shopt -s histappend
 
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
 case $OSTYPE in
     darwin*)
         export GEM_HOME=$HOME/Source/Ruby/Gems
         export GEM_PATH=$HOME/Source/Ruby/Gems/1.8:/Library/Ruby/Gems/1.8
         export PATH=~/Bin:/usr/local/share/python:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:$HOME/Source/Ruby/Gems/bin:$PATH
         export CDPATH=~/Source
+    ;;
+    linux*)
+        export CDPATH=~/src
+        export PATH=~/bin:/usr/sbin:/sbin:$PATH
     ;;
 esac
 
