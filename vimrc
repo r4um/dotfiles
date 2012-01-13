@@ -70,7 +70,10 @@ map <leader>q :wq!<CR>
 map <leader>w :w!<CR>
 
 autocmd FileType ruby set ts=2 sw=2
-
 autocmd FileType ruby set tags+=~/.tags/ruby
-autocmd FileType python set tags+=~/.tags/python
 
+autocmd FileType python set tags+=~/.tags/python
+autocmd FileType python map <buffer> <leader>8 :call Pep8()<CR>
+
+" hilight trailing spaces
+match Todo /\s\+$/
