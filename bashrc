@@ -29,9 +29,10 @@ alias gdb='gdb -q'
 export PYTHONSTARTUP=~/.pystartup
 export GREP_COLOR=00\;35
 export XAUTHORITY=/home/cpk/.Xauthority
-export PAGER=vimpager
 export VISUAL=vim
 export CLICOLOR=1
+
+[ -z "$(which vimpager)" ] || export PAGER=vimpager 
 
 shopt -s histappend
 
@@ -63,3 +64,11 @@ case $TERM in
         PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
      ;;
 esac
+
+function github-setup() {
+    [ -z $1 ] && echo "No token provided" && return
+    git config --global user.name "Pranay Kanwar"
+    git config --global user.email "pranay.kanwar@gmail.com"
+    git config --global github.user username "r4um"
+    git config --global github.token $1
+}
