@@ -1,8 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env ruby
 
-DIR=$(dirname $0)
-DIR=$(cd $DIR && pwd)
+mydir = File.dirname(File.expand_path($0))
+skip = [".", "..", ".git",".gitmodules", "init", "README"]
+myhome = ENV['HOME']
 
-ln -sfhv $DIR/vim ~/.vim
-ln -sfhv $DIR/vimrc ~/.vimrc
-ln -sfhv $DIR/bashrc ~/.bashrc
+for entry in Dir.entries(mydir)
+  next if skip.member? entry
+  src = File.join(mydir, entry)
+  dst = File.join(myhome, entry.insert(0,"."))
+  if File.symlink? dst or not File.exists? dst then
+    File.unlink dst if File.exists? dst
+    File.symlink(src, dst)
+    puts "#{src} -> #{dst}"
+  else
+    puts "Refusing to touch #{dst}, not a symlink"
+  end
+end
+
+# vim: set ft=ruby et ts=2 sw=2 tw=79: 

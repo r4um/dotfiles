@@ -52,8 +52,9 @@ case $OSTYPE in
         export CDPATH=~/Source
     ;;
     linux*)
+        export GEM_HOME=$HOME/src/ruby/gems
         export CDPATH=~/src
-        export PATH=~/bin:/usr/sbin:/sbin:$PATH
+        export PATH=~/bin:$GEM_HOME/bin:/usr/sbin:/sbin:$PATH
     ;;
 esac
 
