@@ -1,0 +1,7 @@
+hardstatus on
+vbell off
+hardstatus alwayslastline "%{-b}%{w}[%{g}%n%{w}] %{y}%t%{-b} %{b}[ %{w}%W%{b} ]"
+defscrollback 5000
+startup_message off
+activity "Oye! see %"
+sorendition b R
