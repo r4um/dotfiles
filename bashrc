@@ -26,7 +26,7 @@ alias ipcalc='ipcalc.pl -n'
 alias vi='vim'
 alias gdb='gdb -q'
 
-export PYTHONSTARTUP=~/.pystartup
+export PYTHONSTARTUP=~/.pyrc
 export GREP_COLOR=00\;35
 export XAUTHORITY=/home/cpk/.Xauthority
 export VISUAL=vim
