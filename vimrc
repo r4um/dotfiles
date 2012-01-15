@@ -26,11 +26,11 @@ if has("autocmd")
   augroup END
 else
     set autoindent
-endif 
+endif
 
 function! Put_modeline ()
   put = 'vim: set et ts='.&tabstop.' sw='.&shiftwidth.' tw='.&textwidth.': '
-endfunction 
+endfunction
 
 " disable pyflakes quick fix
 let g:pyflakes_use_quickfix = 0
@@ -55,6 +55,9 @@ set textwidth=79
 set smarttab
 set foldmethod=indent
 set foldlevel=99
+
+set background=dark
+colorscheme solarized
 
 let mapleader = ","
 
