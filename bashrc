@@ -73,7 +73,7 @@ function github-setup() {
     [ -z $1 ] && echo "No token provided" && return
     git config --global user.name "Pranay Kanwar"
     git config --global user.email "pranay.kanwar@gmail.com"
-    git config --global github.user username "r4um"
+    git config --global github.user "r4um"
     git config --global github.token $1
 }
 
