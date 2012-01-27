@@ -57,7 +57,7 @@ set foldmethod=indent
 set foldlevel=99
 
 set background=dark
-colorscheme solarized
+colorscheme peachpuff
 
 let mapleader = ","
 
