@@ -53,7 +53,9 @@ case $OSTYPE in
         export GEM_HOME=$HOME/src/ruby/gems
         export CDPATH=~/src
         export PATH=~/bin:$GEM_HOME/bin:/usr/sbin:/sbin:$PATH
-        export SSH_AUTH_SOCK=$HOME/.ssh-agent
+        if [ "x$SSH_AUTH_SOCK" == "x" ]; then
+            export SSH_AUTH_SOCK=$HOME/.ssh-agent
+        fi
     ;;
 esac
 
