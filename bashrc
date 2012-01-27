@@ -28,7 +28,6 @@ alias gdb='gdb -q'
 
 export PYTHONSTARTUP=~/.pyrc
 export GREP_COLOR=00\;35
-export XAUTHORITY=/home/cpk/.Xauthority
 export VISUAL=vim
 export CLICOLOR=1
 
@@ -54,6 +53,7 @@ case $OSTYPE in
         export GEM_HOME=$HOME/src/ruby/gems
         export CDPATH=~/src
         export PATH=~/bin:$GEM_HOME/bin:/usr/sbin:/sbin:$PATH
+        export SSH_AUTH_SOCK=$HOME/.ssh-agent
     ;;
 esac
 
@@ -73,7 +73,7 @@ function github-setup() {
     [ -z $1 ] && echo "No token provided" && return
     git config --global user.name "Pranay Kanwar"
     git config --global user.email "pranay.kanwar@gmail.com"
-    git config --global github.user username "r4um"
+    git config --global github.user "r4um"
     git config --global github.token $1
 }
 
