@@ -79,6 +79,15 @@ function github-setup() {
     git config --global github.token $1
 }
 
+function git-update-submodules() {
+    git submodule init && git submodule update
+}
+
+function puppet-check-syntax() {
+    [ $# -eq 0 ] && return
+    puppet parser validate $*
+}
+
 function rm-pyc() {
     find . -type f -name '*.pyc'  -print0 | xargs -0 rm -fv
 }
