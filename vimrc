@@ -29,7 +29,9 @@ else
 endif
 
 function! Put_modeline ()
-  put = 'vim: set et ts='.&tabstop.' sw='.&shiftwidth.' tw='.&textwidth.': '
+  let l:ml = printf("vim: set et ft=%s ts=%d sw=%d tw=%d:", &filetype, &tabstop, &shiftwidth, &textwidth)
+  let l:ml = substitute(&commentstring, "%s", l:ml, "")
+  call append(line("$"), l:ml)
 endfunction
 
 " disable pyflakes quick fix
