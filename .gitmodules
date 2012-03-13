@@ -28,3 +28,6 @@
 [submodule "vim/bundle/vim-puppet"]
 	path = vim/bundle/vim-puppet
 	url = https://github.com/rodjek/vim-puppet.git
+[submodule "vim/bundle/vcscommand"]
+	path = vim/bundle/vcscommand
+	url = git://repo.or.cz/vcscommand.git
