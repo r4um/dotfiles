@@ -59,7 +59,7 @@ set foldmethod=indent
 set foldlevel=99
 
 set background=dark
-colorscheme peachpuff
+colorscheme jellybeans
 
 let mapleader = ","
 
@@ -83,4 +83,3 @@ autocmd FileType python map <buffer> <leader>8 :call Pep8()<CR>
 " hilight trailing spaces
 match Todo /\s\+$/
 
-highlight SpellBad term=reverse cterm=bold ctermfg=7 ctermbg=1 guifg=White guibg=Red

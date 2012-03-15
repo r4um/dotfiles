@@ -61,8 +61,8 @@ esac
 
 case $TERM in
      screen*|ansi*|xterm*|rxvt*)
-        PS1="\[\e[37m\]\[\e[44m\] \u@\h \]\e[m\]\[\e[34m\]─\[\e[37m\]\[\e[44m\] \$? \]\e[m\]\[\e[34m\]─\[\e[m\]\[\e[37m\]\[\e[44m\] \w \]\e[m\]\e[m\]\n\[\e[34m\]»\[\e[m\] "
-        PS2="\[\e[33m\]»\[\e[m\] "
+        PS1="\[\e[31m\]\[\e[40m\] \u@\h \]\e[m\]\[\e[30m\]─\[\e[31m\]\[\e[40m\] \$? \]\e[m\]\[\e[30m\]─\[\e[m\]\[\e[31m\]\[\e[40m\] \w \]\e[m\]\e[m\]\n\[\e[31m\]»\[\e[m\] "
+        PS2="\[\e[31m\]»\[\e[m\] "
         PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
      ;;
 esac
