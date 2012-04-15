@@ -44,15 +44,12 @@ fi
 
 case $OSTYPE in
     darwin*)
-        export GEM_HOME=$HOME/Source/Ruby/Gems
-        export GEM_PATH=$HOME/Source/Ruby/Gems/1.8:/Library/Ruby/Gems/1.8
-        export PATH=~/Bin:/usr/local/share/python:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:$HOME/Source/Ruby/Gems/bin:$PATH
+        export PATH=~/Bin:/usr/local/share/python:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:$PATH
         export CDPATH=~/Source
     ;;
     linux*)
-        export GEM_HOME=$HOME/src/ruby/gems
         export CDPATH=~/src
-        export PATH=~/bin:$GEM_HOME/bin:/usr/sbin:/sbin:$PATH
+        export PATH=~/bin:/usr/sbin:/sbin:$PATH
         if [ "x$SSH_AUTH_SOCK" == "x" ]; then
             export SSH_AUTH_SOCK=$HOME/.ssh-agent
         fi
@@ -67,7 +64,10 @@ case $TERM in
      ;;
 esac
 
-[ -z "$(which vimpager)" ] || export PAGER=vimpager 
+[ -z "$(which vimpager)" ] || export PAGER=vimpager
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+PATH=$PATH:$HOME/.rvm/bin
 
 complete -F _known_hosts nc
 
@@ -95,3 +95,4 @@ function rm-pyc() {
 function my-procs() {
     ps -a -u $USER -o pid,ppid,nice,tty,start,%cpu,time,%mem,vsz,rss,stat,wchan,cmd --sort vsz
 }
+
