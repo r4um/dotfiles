@@ -32,6 +32,7 @@ export VISUAL=vim
 export CLICOLOR=1
 export DEBFULLNAME="Pranay Kanwar"
 export DEBEMAIL="pranay.kanwar@gmail.com"
+export GIT_EDITOR=/usr/bin/vim
 
 shopt -s histappend
 
@@ -71,6 +72,14 @@ esac
 PATH=$PATH:$HOME/.rvm/bin
 
 complete -F _known_hosts nc
+
+if [ -f "${HOME}/.gpg-agent-info" ]; then
+    . "${HOME}/.gpg-agent-info"
+    export GPG_AGENT_INFO
+fi
+
+GPG_TTY=$(tty)
+export GPG_TTY
 
 function github-setup() {
     [ -z $1 ] && echo "No token provided" && return
