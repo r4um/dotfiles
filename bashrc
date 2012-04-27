@@ -30,7 +30,9 @@ export PYTHONSTARTUP=~/.pyrc
 export GREP_COLOR=00\;35
 export VISUAL=vim
 export CLICOLOR=1
-
+export GPGKEY=935B2C1E
+export DEBFULLNAME="Pranay Kanwar"
+export DEBEMAIL="pranay.kanwar@gmail.com"
 
 shopt -s histappend
 
