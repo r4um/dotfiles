@@ -47,10 +47,8 @@ fi
 case $OSTYPE in
     darwin*)
         export PATH=~/Bin:/usr/local/share/python:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:$PATH
-        export CDPATH=~/Source
     ;;
     linux*)
-        export CDPATH=~/src
         export PATH=~/bin:/usr/sbin:/sbin:$PATH
         if [ "x$SSH_AUTH_SOCK" == "x" ]; then
             export SSH_AUTH_SOCK=$HOME/.ssh-agent
