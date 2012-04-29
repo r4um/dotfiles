@@ -66,7 +66,7 @@ let mapleader = ","
 map Q gq
 map <leader>b :MBEbn<CR>
 map <leader>p :TMiniBufExplorer<cr>
-map <leader>t :TagbarToggle<CR>
+map <leader>T :TagbarToggle<CR>
 map <leader>s :set spell<CR>
 map <leader>S :set nospell<CR>
 map <leader>m :call Put_modeline()<CR>
