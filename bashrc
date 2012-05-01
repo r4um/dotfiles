@@ -78,9 +78,6 @@ if [ -f "${HOME}/.gpg-agent-info" ]; then
     export GPG_AGENT_INFO
 fi
 
-GPG_TTY=$(tty)
-export GPG_TTY
-
 function github-setup() {
     git config --global user.name "Pranay Kanwar"
     git config --global user.email "pranay.kanwar@gmail.com"
