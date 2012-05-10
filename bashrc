@@ -35,6 +35,8 @@ export DEBEMAIL="pranay.kanwar@gmail.com"
 export GIT_EDITOR=/usr/bin/vim
 
 shopt -s histappend
+export HISTSIZE=10000
+export HISTFILESIZE=90000
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
