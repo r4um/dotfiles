@@ -64,8 +64,9 @@ colorscheme jellybeans
 let mapleader = ","
 
 map Q gq
-map <leader>b :MBEbn<CR>
-map <leader>p :TMiniBufExplorer<cr>
+map <leader>n :MBEbn<CR>
+map <leader>p :MBEbp<CR>
+map <leader>M :TMiniBufExplorer<cr>
 map <leader>T :TagbarToggle<CR>
 map <leader>s :set spell<CR>
 map <leader>S :set nospell<CR>
@@ -76,10 +77,11 @@ map <leader>w :w!<CR>
 
 autocmd FileType ruby set ts=2 sw=2
 autocmd FileType ruby set tags+=~/.tags/ruby
+map <leader>r :call ri#OpenSearchPrompt(1)<cr>
+map <leader>rk :call ri#LookupNameUnderCursor()<cr>
 
 autocmd FileType python set tags+=~/.tags/python
 autocmd FileType python map <buffer> <leader>8 :call Flake8()<CR>
-autocmd BufWritePost *.py call Flake8()
 
 " hilight trailing spaces
 match Todo /\s\+$/
