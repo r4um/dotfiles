@@ -78,7 +78,8 @@ autocmd FileType ruby set ts=2 sw=2
 autocmd FileType ruby set tags+=~/.tags/ruby
 
 autocmd FileType python set tags+=~/.tags/python
-autocmd FileType python map <buffer> <leader>8 :call Pep8()<CR>
+autocmd FileType python map <buffer> <leader>8 :call Flake8()<CR>
+autocmd BufWritePost *.py call Flake8()
 
 " hilight trailing spaces
 match Todo /\s\+$/
