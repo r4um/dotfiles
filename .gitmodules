@@ -37,3 +37,6 @@
 [submodule "vim/bundle/vim-ri"]
 	path = vim/bundle/vim-ri
 	url = https://github.com/danchoi/ri.vim.git
+[submodule "vim/bundle/vim-pydoc"]
+	path = vim/bundle/vim-pydoc
+	url = https://github.com/fs111/pydoc.vim.git

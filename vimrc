@@ -82,6 +82,8 @@ map <leader>rk :call ri#LookupNameUnderCursor()<cr>
 
 autocmd FileType python set tags+=~/.tags/python
 autocmd FileType python map <buffer> <leader>8 :call Flake8()<CR>
+let g:pydoc_open_cmd = 'vsplit'
+let g:pydoc_highlight=0
 
 " hilight trailing spaces
 match Todo /\s\+$/
