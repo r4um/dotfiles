@@ -58,27 +58,34 @@ case $OSTYPE in
     ;;
 esac
 
-case $TERM in
-     screen*|ansi*|xterm*|rxvt*)
-        PS1="\[\e[31m\]\[\e[40m\] \u@\h \]\e[m\]\[\e[30m\]─\[\e[31m\]\[\e[40m\] \$? \]\e[m\]\[\e[30m\]─\[\e[m\]\[\e[31m\]\[\e[40m\] \w \]\e[m\]\e[m\]\n\[\e[31m\]»\[\e[m\] "
-        PS2="\[\e[31m\]»\[\e[m\] "
-        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
-     ;;
-esac
-
 [ -z "$(which vimpager)" ] || export PAGER=vimpager
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+
 PATH=$PATH:$HOME/.rvm/bin
 
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
 
-complete -F _known_hosts nc
+complete -F _known_hosts nc curl wget socat
 
 if [ -f "${HOME}/.gpg-agent-info" ]; then
     . "${HOME}/.gpg-agent-info"
     export GPG_AGENT_INFO
 fi
+
+case $TERM in
+     screen*|ansi*|xterm*|rxvt*)
+        S="\[\e[31m\]\[\e[40m\]"
+        E="\]\e[m\]"
+        P="\]\e[m\]\[\e[30m\]─\[\e[m\]"
+        N="\n\[\e[31m\]»\[\e[m\] "
+        X="$P$S"
+        PS1="$S \u@\h $X \$? $X \w $E$N"
+        PS2="\[\e[32m\]»\[\e[m\] "
+        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
+     ;;
+esac
 
 function github-setup() {
     git config --global user.name "Pranay Kanwar"
@@ -100,6 +107,6 @@ function rm-pyc() {
 }
 
 function my-procs() {
-    ps -a -u $USER -o pid,ppid,nice,tty,start,%cpu,time,%mem,vsz,rss,stat,wchan,cmd --sort vsz
+    ps -u $USER -o pid,ppid,nice,tty,start,%cpu,time,%mem,vsz,rss,stat,wchan,comm
 }
 
