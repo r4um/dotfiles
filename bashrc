@@ -17,6 +17,10 @@ if [ -f /etc/bash_completion ];then
     . /etc/bash_completion
 fi
 
+if [ -e "$HOME/src/c/misc/ssh-agent-hack.so" ]; then
+    export LD_PRELOAD="$HOME/src/c/misc/ssh-agent-hack.so":$LD_PRELOAD
+fi
+
 umask 0022
 
 alias shred='shred -u -f -v'
