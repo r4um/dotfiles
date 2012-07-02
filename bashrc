@@ -71,6 +71,10 @@ PATH=$PATH:$HOME/.rvm/bin
 
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
 
+export NVM_DIR=$HOME/.nvm
+[[ -r $NVM_DIR/nvm.sh ]] && source $NVM_DIR/nvm.sh
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+
 complete -F _known_hosts nc curl wget socat
 
 if [ -f "${HOME}/.gpg-agent-info" ]; then
