@@ -78,18 +78,15 @@ if [ -f "${HOME}/.gpg-agent-info" ]; then
     export GPG_AGENT_INFO
 fi
 
-case $TERM in
-     screen*|ansi*|xterm*|rxvt*)
-        S="\[\e[31m\]\[\e[40m\]"
-        E="\]\e[m\]"
-        P="\]\e[m\]\[\e[30m\]─\[\e[m\]"
-        N="\n\[\e[31m\]»\[\e[m\] "
-        X="$P$S"
-        PS1="$S \u@\h $X \$? $X \w $E$N"
-        PS2="\[\e[32m\]»\[\e[m\] "
-        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
-     ;;
-esac
+function vcs_info() {
+    local s=
+    if [[ -d ".svn" ]] ; then
+        s="svn:$(svn info | sed -n -e '/^Revision: \([0-9]*\).*$/s//\1/p')"
+    else
+        s=$(__git_ps1 "git:%s")
+    fi
+    [ -z "$s" ] || echo -n "($s)"
+}
 
 function github-setup() {
     git config --global user.name "Pranay Kanwar"
@@ -113,4 +110,20 @@ function rm-pyc() {
 function my-procs() {
     ps -u $USER -o pid,ppid,nice,tty,start,%cpu,time,%mem,vsz,rss,stat,wchan,comm
 }
+
+case $TERM in
+     screen*|ansi*|xterm*|rxvt*)
+        S="\[\e[31m\]\[\e[40m\]"
+        E="\]\e[m\]"
+        P="\]\e[m\]\[\e[30m\]─\[\e[m\]"
+        N="\n\[\e[31m\]»\[\e[m\] "
+        X="$P$S"
+        RP="\$(~/.rvm/bin/rvm-prompt)"
+        SI="\$(vcs_info)"
+        PS1="$S \u@\h $X \$? $X $SI \w $X $RP $E$N"
+        PS2="\[\e[32m\]»\[\e[m\] "
+        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~} $(vcs_info)\007"'
+     ;;
+esac
+
 
