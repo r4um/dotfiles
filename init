@@ -17,4 +17,4 @@ for entry in Dir.entries(mydir)
   end
 end
 
-# vim: set ft=ruby et ts=2 sw=2 tw=79: 
+# vim: set ft=ruby et ts=2 sw=2 tw=79:
