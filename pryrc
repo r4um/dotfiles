@@ -1,6 +1,7 @@
 # vim: set et ft=ruby ts=2 sw=2 tw=79: #
 
 require 'json'
+require 'net/http'
 require 'pp'
 require 'yaml'
 
@@ -15,4 +16,9 @@ end
 
 def rd
   puts RUBY_DESCRIPTION
+end
+
+def hc(c)
+  obj = Net::HTTPResponse::CODE_TO_OBJ[c.to_s]
+  "#{obj} - http://httpstatus.es/#{c}" if obj
 end
