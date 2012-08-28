@@ -1,12 +1,15 @@
-# vim:filetype=python et ts=4 sw=4 tw=79: 
+# vim:filetype=python et ts=4 sw=4 tw=79:
 
 import atexit
 import os
 import readline
-import rlcompleter, readline
+import rlcompleter
 import sys
 
-readline.parse_and_bind('tab: complete')
+if 'libedit' in readline.__doc__:
+    readline.parse_and_bind("bind ^I rl_complete")
+else:
+    readline.parse_and_bind("tab: complete")
 
 historyPath = os.path.expanduser("~/.pyhistory")
 
