@@ -17,6 +17,10 @@ if [ -f /etc/bash_completion ];then
     . /etc/bash_completion
 fi
 
+if [ -f /usr/local/etc/bash_completion ]; then
+    . /usr/local/etc/bash_completion
+fi
+
 if [ -e "$HOME/src/c/ssh-authsock-hack/ssh-authsock-hack.so" ]; then
     export LD_PRELOAD="$HOME/src/c/ssh-authsock-hack/ssh-authsock-hack.so":$LD_PRELOAD
 fi
@@ -112,7 +116,7 @@ function rm-pyc() {
 }
 
 function my-procs() {
-    ps -u $USER -o pid,ppid,nice,tty,start,%cpu,time,%mem,vsz,rss,stat,wchan,comm
+    ps -o pid,ppid,nice,tty,start,%cpu,time,%mem,vsz,rss,stat,wchan,comm -U $USER
 }
 
 case $TERM in
