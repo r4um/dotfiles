@@ -1,4 +1,5 @@
 " init pathogen
+set nocp
 filetype off
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
@@ -76,11 +77,9 @@ map <leader>q :wq!<CR>
 map <leader>w :w!<CR>
 
 autocmd FileType ruby set ts=2 sw=2
-autocmd FileType ruby set tags+=~/.tags/ruby
 map <leader>r :call ri#OpenSearchPrompt(1)<cr>
 map <leader>rk :call ri#LookupNameUnderCursor()<cr>
 
-autocmd FileType python set tags+=~/.tags/python
 autocmd FileType python map <buffer> <leader>8 :call Flake8()<CR>
 let g:pydoc_open_cmd = 'vsplit'
 let g:pydoc_highlight=0
