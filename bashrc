@@ -89,17 +89,18 @@ fi
 function vcs_info() {
     local s=
     if [[ -d ".svn" ]] ; then
-        s="svn:$(svn info | sed -n -e '/^Revision: \([0-9]*\).*$/s//\1/p')"
+        s="svn:$(svn info | sed -n -e '/^Revision: \([0-9]*\).*$/s//\1/p') "
     else
         s=$(__git_ps1 "git:%s")
     fi
-    [ -z "$s" ] || echo -n "($s)"
+    [ -z "$s" ] || echo -n "($s) "
 }
 
-function github-setup() {
+function git-setup() {
     git config --global user.name "Pranay Kanwar"
     git config --global user.email "pranay.kanwar@gmail.com"
-    git config --global github.user "r4um"
+    git config --global color.ui auto
+    git config --global core.pager cat
 }
 
 function git-update-submodules() {
@@ -119,18 +120,34 @@ function my-procs() {
     ps -o pid,ppid,nice,tty,start,%cpu,time,%mem,vsz,rss,stat,wchan,comm -U $USER
 }
 
+
 case $TERM in
      screen*|ansi*|xterm*|rxvt*)
-        S="\[\e[31m\]\[\e[40m\]"
-        E="\]\e[m\]"
-        P="\]\e[m\]\[\e[30m\]─\[\e[m\]"
-        N="\n\[\e[31m\]»\[\e[m\] "
-        X="$P$S"
+        S='\[\e[0m\]\[\e[0;30m\]'
+        E='\[\e[0;34m\]\[\e[40m\]'
+        F='\[\e[0;31m\]\[\e[40m\]'
+        V='\[\e[0;32m\]\[\e[40m\]'
+        R='\[\e[0m\]'
+
+        export GIT_PS1_SHOWDIRTYSTATE=1
+        export GIT_PS1_SHOWUPSTREAM="auto"
+        export GIT_PS1_SHOWSTASHSTATE=1
+        export GIT_PS1_SHOWUNTRACKEDFILES=1
+
+        SI="${V}\$(vcs_info)${E}"
         RP="\$(~/.rvm/bin/rvm-prompt)"
-        SI="\$(vcs_info)"
-        PS1="$S \u@\h $X \$? $X $SI \w $X $RP $E$N"
-        PS2="\[\e[32m\]»\[\e[m\] "
-        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~} $(vcs_info)\007"'
+
+        function prompt_cmd() {
+            if [[ $? -eq 0 ]]; then
+              export PS1="${S}┌──${E} \u@\h ${S}─${E} $? ${S}─${E} $SI\w ${S}─${E} $RP ${S}\n└ ${R}"
+            else
+              export PS1="${S}┌──${E} \u@\h ${S}─${F} $? ${S}─${E} $SI\w ${S}─${E} $RP ${S}\n└ ${R}"
+            fi
+            echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~} $(vcs_info)\007"
+        }
+
+        export PS2="... "
+        export PROMPT_COMMAND=prompt_cmd
      ;;
 esac
 

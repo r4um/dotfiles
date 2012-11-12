@@ -1,32 +1,29 @@
+set nocompatible
+
 " init pathogen
-set nocp
 filetype off
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
 
-if v:progname =~? "evim"
-  finish
-endif
+set hidden
+set nobackup
+set noswapfile
 
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
+  set background=dark
+  let g:solarized_termtrans=1
+  let g:solarized_contrast="high"
+  let g:solarized_visibility="high"
+  colorscheme solarized
 endif
 
 if has("autocmd")
   filetype plugin indent on
-  augroup vimrcEx
-  au!
-  autocmd FileType text setlocal textwidth=78
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
-
-  augroup END
 else
-    set autoindent
+  set autoindent
 endif
 
 function! Put_modeline ()
@@ -35,51 +32,53 @@ function! Put_modeline ()
   call append(line("$"), l:ml)
 endfunction
 
-" disable pyflakes quick fix
-let g:pyflakes_use_quickfix = 0
+set pastetoggle=<F2>
 
-
-let g:miniBufExplForceSyntaxEnable=1
-let g:miniBufExplMapWindowNavVim=1
-
-set nocompatible
-set mouse=a
 set backspace=indent,eol,start
 set ruler
 set showcmd
-
-set history=100
+set history=500
 set incsearch
-
 set expandtab
 set tabstop=4
 set shiftwidth=4
-set textwidth=79
 set smarttab
 set foldmethod=indent
 set foldlevel=99
+set number
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
-set background=dark
-colorscheme jellybeans
+set laststatus=2
 
 let mapleader = ","
 
-map Q gq
-map <leader>n :MBEbn<CR>
-map <leader>p :MBEbp<CR>
+vmap Q gq
+nmap Q gqap
+
 map <leader>M :TMiniBufExplorer<cr>
 map <leader>T :TagbarToggle<CR>
 map <leader>s :set spell<CR>
 map <leader>S :set nospell<CR>
+map <leader>l :set list<CR>
 map <leader>m :call Put_modeline()<CR>
 map <leader>x :q!<CR>
 map <leader>q :wq!<CR>
 map <leader>w :w!<CR>
+nmap <silent> <leader>/ :nohlsearch<CR>
+
+map <leader>gs :Gstatus<CR>
+map <leader>gd :Gdiff<CR>
+map <leader>gd :Gdiff<CR>
+map <leader>gc :Gcommit<CR>
+map <leader>gb :Gblame<CR>
+map <leader>gl :Glog<CR>
+map <leader>gp :Git push<CR>
 
 autocmd FileType ruby set ts=2 sw=2
 map <leader>r :call ri#OpenSearchPrompt(1)<cr>
 map <leader>rk :call ri#LookupNameUnderCursor()<cr>
 
+autocmd FileType python set tw=79
 autocmd FileType python map <buffer> <leader>8 :call Flake8()<CR>
 let g:pydoc_open_cmd = 'vsplit'
 let g:pydoc_highlight=0
