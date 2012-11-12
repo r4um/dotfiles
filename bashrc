@@ -139,9 +139,9 @@ case $TERM in
 
         function prompt_cmd() {
             if [[ $? -eq 0 ]]; then
-              export PS1="${S}┌──${E} \u@\h ${S}─${E} $? ${S}─${E} $SI\w ${S}─${E} $RP ${S}\n└ ${R}"
+              export PS1="${S}┌──${E} \u@\h ${S}─${E} $? ${S}─${E} $SI\w ${S}─${E} $RP \n${S}└ ${R}"
             else
-              export PS1="${S}┌──${E} \u@\h ${S}─${F} $? ${S}─${E} $SI\w ${S}─${E} $RP ${S}\n└ ${R}"
+              export PS1="${S}┌──${E} \u@\h ${S}─${F} $? ${S}─${E} $SI\w ${S}─${E} $RP \n${S}└ ${R}"
             fi
             echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~} $(vcs_info)\007"
         }
