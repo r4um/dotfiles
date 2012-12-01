@@ -17,8 +17,8 @@ if [ -f /etc/bash_completion ];then
     . /etc/bash_completion
 fi
 
-if [ -f /usr/local/etc/bash_completion ]; then
-    . /usr/local/etc/bash_completion
+if [ -f /usr/local/share/bash-completion/bash_completion ]; then
+    . /usr/local/share/bash-completion/bash_completion
 fi
 
 if [ -e "$HOME/src/c/ssh-authsock-hack/ssh-authsock-hack.so" ]; then
