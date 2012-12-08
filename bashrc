@@ -27,32 +27,12 @@ fi
 
 umask 0022
 
-alias shred='shred -u -f -v'
-alias mount='mount -v'
-alias umount='umount -v'
-alias ipcalc='ipcalc.pl -n'
-alias vi='vim'
-alias gdb='gdb -q'
-
 export PYTHONSTARTUP=~/.pyrc
-export GREP_COLOR=00\;35
-export VISUAL=vim
 export CLICOLOR=1
-export DEBFULLNAME="Pranay Kanwar"
-export DEBEMAIL="pranay.kanwar@gmail.com"
-export GIT_EDITOR=/usr/bin/vim
 
 shopt -s histappend
 export HISTSIZE=10000
 export HISTFILESIZE=90000
-
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
 
 case $OSTYPE in
     darwin*)
