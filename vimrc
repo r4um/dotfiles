@@ -18,6 +18,7 @@ if &t_Co > 2 || has("gui_running")
   let g:solarized_termtrans=1
   let g:solarized_contrast="high"
   let g:solarized_visibility="high"
+  let g:solarized_hitrail=1
   colorscheme solarized
 endif
 
@@ -33,7 +34,6 @@ function! Put_modeline ()
   call append(line("$"), l:ml)
 endfunction
 
-set pastetoggle=<F2>
 
 set backspace=indent,eol,start
 set ruler
@@ -47,7 +47,8 @@ set smarttab
 set foldmethod=indent
 set foldlevel=99
 set number
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
+set listchars=tab:».,trail:.,extends:#,nbsp:.
+set list
 
 set laststatus=2
 
@@ -56,11 +57,11 @@ let mapleader = ","
 vmap Q gq
 nmap Q gqap
 
-map <leader>M :TMiniBufExplorer<cr>
+map <leader>p :set paste!<CR>
 map <leader>T :TagbarToggle<CR>
 map <leader>s :set spell<CR>
 map <leader>S :set nospell<CR>
-map <leader>l :set list<CR>
+map <leader>l :set list!<CR>
 map <leader>m :call Put_modeline()<CR>
 map <leader>x :q!<CR>
 map <leader>q :wq!<CR>
@@ -84,6 +85,6 @@ autocmd FileType python map <buffer> <leader>8 :call Flake8()<CR>
 let g:pydoc_open_cmd = 'vsplit'
 let g:pydoc_highlight=0
 
-" hilight trailing spaces
-match Todo /\s\+$/
-
+" toggle spell
+imap <Leader>s <C-o>:setlocal spell!<CR>
+nmap <Leader>s :setlocal spell!<CR>
