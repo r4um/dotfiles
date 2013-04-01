@@ -85,6 +85,9 @@ function git-setup() {
 
 function git-update-submodules() {
     git submodule init && git submodule update
+    for M in $(git submodule  --quiet foreach 'echo $name') ; do
+        git config submodule.$M.ignore untracked
+    done
 }
 
 function puppet-check-syntax() {
