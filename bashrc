@@ -13,13 +13,9 @@ if [ -e /usr/local/bin/brew ]; then
     fi
 fi
 
-if [ -f /etc/bash_completion ];then
-    . /etc/bash_completion
-fi
+[[ -s /etc/bash_completion ]] && source /etc/bash_completion
 
-if [ -f /usr/local/share/bash-completion/bash_completion ]; then
-    . /usr/local/share/bash-completion/bash_completion
-fi
+[[ -s /usr/local/share/bash-completion/bash_completion ]] && source /usr/local/share/bash-completion/bash_completion
 
 if [ -e "$HOME/src/c/ssh-authsock-hack/ssh-authsock-hack.so" ]; then
     export LD_PRELOAD="$HOME/src/c/ssh-authsock-hack/ssh-authsock-hack.so":$LD_PRELOAD
@@ -50,7 +46,6 @@ esac
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
-
 PATH=$PATH:$HOME/.rvm/bin
 
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
@@ -58,6 +53,9 @@ PATH=$PATH:$HOME/.rvm/bin
 export NVM_DIR=$HOME/.nvm
 [[ -r $NVM_DIR/nvm.sh ]] && source $NVM_DIR/nvm.sh
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+[[ -z "$GOROOT" ]] || export GOBIN=$GOROOT/bin
 
 complete -F _known_hosts nc curl wget socat
 
@@ -119,12 +117,13 @@ case $TERM in
 
         SI="${V}\$(vcs_info)${E}"
         RP="\$(~/.rvm/bin/rvm-prompt)"
+        GP="\$(~/.gvm/bin/gvm-prompt)"
 
         function prompt_cmd() {
             if [[ $? -eq 0 ]]; then
-              export PS1="${S}┌──${E} \u@\h ${S}─${E} $? ${S}─${E} $SI\w ${S}─${E} $RP ${R}\n${S}└ ${R}"
+              export PS1="${S}┌──${E} \u@\h ${S}─${E} $? ${S}─${E} $SI\w ${S}─${E} $RP ${S}─${E} $GP ${R}\n${S}└ ${R}"
             else
-              export PS1="${S}┌──${E} \u@\h ${S}─${F} $? ${S}─${E} $SI\w ${S}─${E} $RP ${R}\n${S}└ ${R}"
+              export PS1="${S}┌──${E} \u@\h ${S}─${F} $? ${S}─${E} $SI\w ${S}─${E} $RP ${S}─${E} $GP ${R}\n${S}└ ${R}"
             fi
             echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~} $(vcs_info)\007"
         }
