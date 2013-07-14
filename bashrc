@@ -48,7 +48,10 @@ esac
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 PATH=$PATH:$HOME/.rvm/bin
 
-[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
+if [ -d ~/.pyenv/bin ]; then
+    export PATH=$HOME/.pyenv/bin:$PATH
+    eval "$(pyenv init -)"
+fi
 
 export NVM_DIR=$HOME/.nvm
 [[ -r $NVM_DIR/nvm.sh ]] && source $NVM_DIR/nvm.sh
