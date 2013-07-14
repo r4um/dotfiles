@@ -68,6 +68,9 @@ map <leader>q :wq!<CR>
 map <leader>w :w!<CR>
 nmap <silent> <leader>/ :nohlsearch<CR>
 
+let g:ctrlp_map = '<leader>t'
+let g:ctrlp_cmd = 'CtrlP'
+
 map <leader>gs :Gstatus<CR>
 map <leader>gd :Gdiff<CR>
 map <leader>gd :Gdiff<CR>
@@ -84,6 +87,11 @@ autocmd FileType python set tw=79
 autocmd FileType python map <buffer> <leader>8 :call Flake8()<CR>
 let g:pydoc_open_cmd = 'vsplit'
 let g:pydoc_highlight=0
+
+autocmd FileType go compiler golang
+autocmd FileType go set commentstring=//\ %s
+let g:golang_goroot = $GOROOT
+let g:golang_onwrite = 0
 
 " toggle spell
 imap <Leader>s <C-o>:setlocal spell!<CR>
