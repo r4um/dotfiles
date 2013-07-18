@@ -14,10 +14,10 @@ set noswapfile
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
-  set background=dark
+  set background=light
   let g:solarized_termtrans=1
   let g:solarized_contrast="high"
-  let g:solarized_visibility="high"
+  let g:solarized_visibility="normal"
   let g:solarized_hitrail=1
   colorscheme solarized
 endif
@@ -34,7 +34,6 @@ function! Put_modeline ()
   call append(line("$"), l:ml)
 endfunction
 
-
 set backspace=indent,eol,start
 set ruler
 set showcmd
@@ -49,8 +48,8 @@ set foldlevel=99
 set number
 set listchars=tab:».,trail:.,extends:#,nbsp:.
 set list
-
 set laststatus=2
+set ttimeoutlen=50
 
 let mapleader = ","
 
@@ -67,6 +66,10 @@ map <leader>x :q!<CR>
 map <leader>q :wq!<CR>
 map <leader>w :w!<CR>
 nmap <silent> <leader>/ :nohlsearch<CR>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_cmd = 'CtrlP'
@@ -90,6 +93,9 @@ let g:pydoc_highlight=0
 
 autocmd FileType go compiler golang
 autocmd FileType go set commentstring=//\ %s
+autocmd FileType go set noet
+autocmd FileType go set nolist
+autocmd FileType go map <buffer> <leader>gf :Fmt<CR>
 let g:golang_goroot = $GOROOT
 let g:golang_onwrite = 0
 

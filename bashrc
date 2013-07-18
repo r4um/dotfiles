@@ -77,6 +77,16 @@ function vcs_info() {
     [ -z "$s" ] || echo -n "($s) "
 }
 
+function python_info() {
+    PP=$(pyenv version)
+    PP=${PP//$HOME/\~}
+    PP=${PP//set by /}
+    if [ ! -z $VIRTUAL_ENV ]; then
+        PP="@$(basename $VIRTUAL_ENV) $PP"
+    fi
+    echo -n $PP
+}
+
 function git-setup() {
     git config --global user.name "Pranay Kanwar"
     git config --global user.email "pranay.kanwar@gmail.com"
@@ -107,10 +117,10 @@ function my-procs() {
 
 case $TERM in
      screen*|ansi*|xterm*|rxvt*)
-        S='\[\e[0m\]\[\e[0;30m\]'
-        E='\[\e[0;34m\]\[\e[40m\]'
-        F='\[\e[0;31m\]\[\e[40m\]'
-        V='\[\e[0;32m\]\[\e[40m\]'
+        S='\[\e[0m\]\[\e[0;37m\]'
+        E='\[\e[0;34m\]\[\e[47m\]'
+        F='\[\e[0;31m\]\[\e[47m\]'
+        V='\[\e[0;36m\]\[\e[47m\]'
         R='\[\e[0m\]'
 
         export GIT_PS1_SHOWDIRTYSTATE=1
@@ -121,12 +131,13 @@ case $TERM in
         SI="${V}\$(vcs_info)${E}"
         RP="\$(~/.rvm/bin/rvm-prompt)"
         GP="\$(~/.gvm/bin/gvm-prompt)"
+        PP="\$(python_info)"
 
         function prompt_cmd() {
             if [[ $? -eq 0 ]]; then
-              export PS1="${S}┌──${E} \u@\h ${S}─${E} $? ${S}─${E} $SI\w ${S}─${E} $RP ${S}─${E} $GP ${R}\n${S}└ ${R}"
+                export PS1="${S}┌──${E} \u@\h ${S}─${E} $? ${S}─${E} $SI\w ${S}─${E} $RP ${S}─${E} $GP ${S}─${E} $PP ${R}\n${S}└ ${R}"
             else
-              export PS1="${S}┌──${E} \u@\h ${S}─${F} $? ${S}─${E} $SI\w ${S}─${E} $RP ${S}─${E} $GP ${R}\n${S}└ ${R}"
+                export PS1="${S}┌──${E} \u@\h ${S}─${F} $? ${S}─${E} $SI\w ${S}─${E} $RP ${S}─${E} $GP ${S}─${E} $PP ${R}\n${S}└ ${R}"
             fi
             echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~} $(vcs_info)\007"
         }
