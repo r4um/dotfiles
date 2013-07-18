@@ -51,6 +51,8 @@ set list
 set laststatus=2
 set ttimeoutlen=50
 
+let g:airline_theme='light'
+
 let mapleader = ","
 
 vmap Q gq
