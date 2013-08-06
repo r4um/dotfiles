@@ -146,5 +146,3 @@ case $TERM in
         export PROMPT_COMMAND=prompt_cmd
      ;;
 esac
-
-
