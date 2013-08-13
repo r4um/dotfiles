@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 mydir = File.dirname(File.expand_path($0))
-skip = [".", "..", ".git",".gitmodules", "init", "README"]
+skip = [".", "..", ".git",".gitignore", ".gitmodules", "init", "README"]
 myhome = ENV['HOME']
 
 for entry in Dir.entries(mydir)
