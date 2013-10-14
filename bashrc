@@ -75,7 +75,7 @@ function vcs_info() {
     else
         s=$(__git_ps1 "git:%s")
     fi
-    [ -z "$s" ] || echo -n "($s) "
+    [ -z "$s" ] || echo -n "$s"
 }
 
 function python_info() {
@@ -117,9 +117,6 @@ function my-procs() {
 
 case $TERM in
      screen*|ansi*|xterm*|rxvt*)
-        B='\[\e[0;36m\]'
-        F='\[\e[0;31m\]'
-        R='\[\e[0m\]'
 
         export GIT_PS1_SHOWDIRTYSTATE=1
         export GIT_PS1_SHOWUPSTREAM="auto"
@@ -127,12 +124,18 @@ case $TERM in
         export GIT_PS1_SHOWUNTRACKEDFILES=1
 
         function prompt_cmd() {
+            S="\033[0;36m"
+            F="\033[0;31m"
+            # reset
+            R="\033[0;00m"
+
             if [[ $? -eq 0 ]]; then
-                export PS1="${B}λ${R}: "
+                export PS1="\[${R}\]\[${S}\]λ: \[${R}\]"
             else
-                export PS1="${F}λ${R}: "
+                export PS1="\[${R}\]\[${F}\]λ: \[${R}\]"
             fi
-            echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}:$(vcs_info)\007"
+
+            echo -ne "\033]0;[${USER}@${HOSTNAME%%.*}][${PWD/#$HOME/~}][$(vcs_info)][$(~/.rvm/bin/rvm-prompt)]\007"
         }
 
         export PS2="   ${B}>${R} "
