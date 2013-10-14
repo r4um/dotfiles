@@ -115,10 +115,9 @@ function my-procs() {
     ps -o pid,ppid,nice,tty,start,%cpu,time,%mem,vsz,rss,stat,wchan,comm -U $USER
 }
 
-
 case $TERM in
      screen*|ansi*|xterm*|rxvt*)
-        B='\[\e[0;34m\]'
+        B='\[\e[0;36m\]'
         F='\[\e[0;31m\]'
         R='\[\e[0m\]'
 
