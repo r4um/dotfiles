@@ -123,22 +123,17 @@ case $TERM in
         export GIT_PS1_SHOWSTASHSTATE=1
         export GIT_PS1_SHOWUNTRACKEDFILES=1
 
+        S="\033[0;36m"
+        R="\033[0;00m"
+        export PS1="\[${R}\]\[${S}\]λ\[${R}\]: "
+        export PS2="   ${B}>${R}: "
+        export PS3=${PS2}
+        export PS4=${PS2}
+
         function prompt_cmd() {
-            S="\033[0;36m"
-            F="\033[0;31m"
-            # reset
-            R="\033[0;00m"
-
-            if [[ $? -eq 0 ]]; then
-                export PS1="\[${R}\]\[${S}\]λ: \[${R}\]"
-            else
-                export PS1="\[${R}\]\[${F}\]λ: \[${R}\]"
-            fi
-
-            echo -ne "\033]0;[${USER}@${HOSTNAME%%.*}][${PWD/#$HOME/~}][$(vcs_info)][$(~/.rvm/bin/rvm-prompt)]\007"
+            echo -ne "\033]0;[${USER}@${HOSTNAME%%.*}][$?][${PWD/#$HOME/~}][$(vcs_info)][$(~/.rvm/bin/rvm-prompt)]\007"
         }
 
-        export PS2="   ${B}>${R} "
         export PROMPT_COMMAND=prompt_cmd
      ;;
 esac
