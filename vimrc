@@ -88,9 +88,9 @@ autocmd FileType ruby set ts=2 sw=2
 autocmd FileType ruby compiler ruby
 map <leader>r :call ri#OpenSearchPrompt(1)<cr>
 map <leader>rk :call ri#LookupNameUnderCursor()<cr>
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
+"let g:rubycomplete_buffer_loading = 1
+"let g:rubycomplete_classes_in_global = 1
+"let g:rubycomplete_rails = 1
 
 autocmd FileType python set tw=79
 autocmd FileType python map <buffer> <leader>8 :call Flake8()<CR>

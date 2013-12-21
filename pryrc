@@ -7,6 +7,11 @@ require 'yaml'
 
 Pry.config.memory_size = 500
 Pry.config.editor = lambda{ |file, line| "vim #{file} +#{line}" }
+Pry.config.pager = false
+
+def add_lib_to_load_path
+  $LOAD_PATH << File.join(Dir.pwd, "lib")
+end
 
 class Object
   def local_methods
