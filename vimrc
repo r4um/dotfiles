@@ -108,3 +108,24 @@ let g:golang_onwrite = 0
 " toggle spell
 imap <Leader>s <C-o>:setlocal spell!<CR>
 nmap <Leader>s :setlocal spell!<CR>
+
+" Ultisnips
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
+let g:UltiSnipsExpandTrigger="<c-j>"
+
+" eclim
+let g:EclimProjectTreeAutoOpen=0
+let g:EclimProjectTreeExpandPathOnOpen=1
+let g:EclimProjectTreeSharedInstance=1
+
+nnoremap <leader>js :JavaSearch<CR>
+nnoremap <leader>jgs :JavaSet<CR>
+nnoremap <leader>jgg :JavaGet<CR>
+nnoremap <leader>jg :JavaGetSet<CR>
+nnoremap <leader>jh :JavaHierarchy<CR>
+nnoremap <leader>jii :JavaImpl<CR>
+nnoremap <leader>jd :JavaDelegate<CR>
+nnoremap <leader>ji :JavaImport<CR>
+nnoremap <leader>jim :JavaImportMissing<CR>
+nnoremap <leader>jr :JavaRename<CR>
+nnoremap <leader>jf :JavaFormat<CR>
