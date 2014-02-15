@@ -32,7 +32,7 @@ export HISTFILESIZE=90000
 
 case $OSTYPE in
     darwin*)
-        export PATH=~/Bin:/usr/local/share/python:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:$PATH
+        export PATH=~/bin:/usr/local/share/python:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:$PATH
     ;;
     linux*)
         export PATH=~/bin:/usr/sbin:/sbin:$PATH
