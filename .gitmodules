@@ -14,25 +14,9 @@
 	path = vim/bundle/vim-puppet
 	url = https://github.com/rodjek/vim-puppet.git
     ignore = untracked
-[submodule "vim/bundle/vim-scala"]
-	path = vim/bundle/vim-scala
-	url = git://github.com/derekwyatt/vim-scala.git
-    ignore = untracked
-[submodule "vim/bundle/vim-flake8"]
-	path = vim/bundle/vim-flake8
-	url = https://github.com/nvie/vim-flake8.git
-    ignore = untracked
-[submodule "vim/bundle/vim-ri"]
-	path = vim/bundle/vim-ri
-	url = https://github.com/danchoi/ri.vim.git
-    ignore = untracked
 [submodule "vim/bundle/vim-pydoc"]
 	path = vim/bundle/vim-pydoc
 	url = https://github.com/fs111/pydoc.vim.git
-    ignore = untracked
-[submodule "vim/bundle/vim-rails"]
-	path = vim/bundle/vim-rails
-	url = git://github.com/tpope/vim-rails.git
     ignore = untracked
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
@@ -114,3 +98,6 @@
 	path = vim/bundle/indentline
 	url = https://github.com/Yggdroot/indentLine.git
     ignore = untracked
+[submodule "vim/bundle/tern_for_vim"]
+	path = vim/bundle/tern_for_vim
+	url = https://github.com/marijnh/tern_for_vim.git

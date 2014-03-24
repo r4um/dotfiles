@@ -59,15 +59,13 @@ vmap Q gq
 nmap Q gqap
 
 map <leader>p :set paste!<CR>
-map <leader>T :TagbarToggle<CR>
-map <leader>s :set spell<CR>
-map <leader>S :set nospell<CR>
 map <leader>l :set list!<CR>
+
+map <leader>T :TagbarToggle<CR>
 map <leader>m :call Put_modeline()<CR>
-map <leader>x :q!<CR>
-map <leader>q :wq!<CR>
-map <leader>w :w!<CR>
+
 nmap <silent> <leader>/ :nohlsearch<CR>
+
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -86,16 +84,6 @@ map <leader>gp :Git push<CR>
 
 autocmd FileType ruby set ts=2 sw=2
 autocmd FileType ruby compiler ruby
-map <leader>r :call ri#OpenSearchPrompt(1)<cr>
-map <leader>rk :call ri#LookupNameUnderCursor()<cr>
-"let g:rubycomplete_buffer_loading = 1
-"let g:rubycomplete_classes_in_global = 1
-"let g:rubycomplete_rails = 1
-
-autocmd FileType python set tw=79
-autocmd FileType python map <buffer> <leader>8 :call Flake8()<CR>
-let g:pydoc_open_cmd = 'vsplit'
-let g:pydoc_highlight=0
 
 autocmd FileType go compiler golang
 autocmd FileType go set commentstring=//\ %s
@@ -129,3 +117,10 @@ nnoremap <leader>ji :JavaImport<CR>
 nnoremap <leader>jim :JavaImportMissing<CR>
 nnoremap <leader>jr :JavaRename<CR>
 nnoremap <leader>jf :JavaFormat<CR>
+
+" tern js
+nnoremap <leader>td :TernDef<CR>
+nnoremap <leader>to :TernDoc<CR>
+nnoremap <leader>tt :TernType<CR>
+nnoremap <leader>tr :TernRefs<CR>
+nnoremap <leader>te :TernRename<CR>
