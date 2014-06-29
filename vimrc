@@ -86,7 +86,6 @@ map <leader>gp :Git push<CR>
 autocmd FileType ruby set ts=2 sw=2
 autocmd FileType ruby compiler ruby
 
-autocmd FileType go compiler golang
 autocmd FileType go set commentstring=//\ %s
 autocmd FileType go set noet
 autocmd FileType go set nolist
