@@ -126,7 +126,7 @@ case $TERM in
         S="\033[0;36m"
         R="\033[0;00m"
         export PS1="\[${R}\]\[${S}\]λ\[${R}\]: "
-        export PS2="   ${B}>${R}: "
+        export PS2="   \[${S}\]>\[${R}\]: "
         export PS3=${PS2}
         export PS4=${PS2}
 
