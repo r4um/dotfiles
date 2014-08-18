@@ -33,14 +33,27 @@ export HISTFILESIZE=90000
 case $OSTYPE in
     darwin*)
         export PATH=~/bin:/usr/local/share/python:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:$PATH
+        alias ls='ls -F'
     ;;
     linux*)
         export PATH=~/bin:/usr/sbin:/sbin:$PATH
+
         if [ "x$SSH_AUTH_SOCK" == "x" ]; then
             export SSH_AUTH_SOCK=$HOME/.ssh-agent
         fi
+
+        alias ls='ls -F --color'
+
+        if [ -x /usr/bin/dircolors ]; then
+            test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+        fi
     ;;
 esac
+
+alias gti=git
+alias g=git
+complete -F _git gti
+complete -F _git g
 
 [ -z "$(which vimpager)" ] || export PAGER=vimpager
 
@@ -123,10 +136,11 @@ case $TERM in
         export GIT_PS1_SHOWSTASHSTATE=1
         export GIT_PS1_SHOWUNTRACKEDFILES=1
 
-        S="\033[0;36m"
         R="\033[0;00m"
-        export PS1="\[${R}\]\[${S}\]λ\[${R}\]: "
-        export PS2="   \[${S}\]>\[${R}\]: "
+        S="\033[0;36m"
+        T="\033[0;33m"
+        export PS1="\[${R}\]\[${S}\]❯\[${R}\] "
+        export PS2="   \[${T}\]❯\[${R}\] "
         export PS3=${PS2}
         export PS4=${PS2}
 
