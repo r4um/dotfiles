@@ -27,8 +27,11 @@ export PYTHONSTARTUP=~/.pyrc
 export CLICOLOR=1
 
 shopt -s histappend
+shopt -s cmdhist
 export HISTSIZE=10000
 export HISTFILESIZE=90000
+export HISTCONTROL=ignoreboth
+export HISTIGNORE=cd:pwd:history:fg:bg:jobs:ls:df:du:top
 
 case $OSTYPE in
     darwin*)
@@ -139,15 +142,23 @@ case $TERM in
         R="\033[0;00m"
         S="\033[0;36m"
         T="\033[0;33m"
-        export PS1="\[${R}\]\[${S}\]❯\[${R}\] "
-        export PS2="   \[${T}\]❯\[${R}\] "
+        export PS1="\[${R}\]\[${S}\]‣\[${R}\] "
+        export PS2="   \[${T}\]‣\[${R}\] "
         export PS3=${PS2}
         export PS4=${PS2}
 
         function prompt_cmd() {
             echo -ne "\033]0;[${USER}@${HOSTNAME%%.*}][$?][${PWD/#$HOME/~}][$(vcs_info)][$(~/.rvm/bin/rvm-prompt)]\007"
+            history -a &> /dev/null
         }
 
         export PROMPT_COMMAND=prompt_cmd
      ;;
 esac
+
+shopt -s nullglob
+for E in ~/.env/*
+do
+    source $E
+done
+shopt -u nullglob
