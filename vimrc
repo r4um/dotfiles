@@ -16,11 +16,12 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
   set background=light
   let g:rainbow_active = 1
-  let g:solarized_termtrans=1
-  let g:solarized_contrast="high"
-  let g:solarized_visibility="normal"
-  let g:solarized_hitrail=1
-  colorscheme solarized
+  "let g:solarized_termtrans=1
+  "let g:solarized_contrast="high"
+  "let g:solarized_visibility="normal"
+  "let g:solarized_hitrail=1
+  "colorscheme solarized
+  colorscheme zenburn
 endif
 
 if has("autocmd")

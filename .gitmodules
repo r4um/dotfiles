@@ -91,3 +91,6 @@
 [submodule "vim/bundle/vim-gocode"]
 	path = vim/bundle/vim-gocode
 	url = https://github.com/Blackrush/vim-gocode.git
+[submodule "vim/bundle/zenburn"]
+	path = vim/bundle/zenburn
+	url = https://github.com/jnurmine/Zenburn.git
