@@ -53,7 +53,8 @@ set list
 set laststatus=2
 set ttimeoutlen=50
 
-let g:airline_theme='light'
+"let g:airline_theme='light'
+let g:airline_theme='dark'
 
 let mapleader = ","
 
