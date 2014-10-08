@@ -14,14 +14,9 @@ set noswapfile
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
-  set background=light
+  set background=dark
   let g:rainbow_active = 1
-  "let g:solarized_termtrans=1
-  "let g:solarized_contrast="high"
-  "let g:solarized_visibility="normal"
-  "let g:solarized_hitrail=1
-  "colorscheme solarized
-  colorscheme zenburn
+  colorscheme solarized
 endif
 
 if has("autocmd")
