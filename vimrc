@@ -16,7 +16,12 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
   set background=dark
   let g:rainbow_active = 1
+  let g:solarized_termtrans = 1
+  let g:solarized_visibility = 'high'
+  let g:solarized_bold = 0
+  let g:solarized_italic = 0
   colorscheme solarized
+  highlight clear SignColumn
 endif
 
 if has("autocmd")
@@ -48,8 +53,8 @@ set list
 set laststatus=2
 set ttimeoutlen=50
 
-"let g:airline_theme='light'
-let g:airline_theme='dark'
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'solarized'
 
 let mapleader = ","
 

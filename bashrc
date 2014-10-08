@@ -79,36 +79,20 @@ export PATH=$HOME/.rvm/bin:$PATH
 
 complete -F _known_hosts nc curl wget socat
 
-if [ -f "${HOME}/.gpg-agent-info" ]; then
-    . "${HOME}/.gpg-agent-info"
-    export GPG_AGENT_INFO
-fi
-
 function vcs_info() {
     local s=
-    if [[ -d ".svn" ]] ; then
-        s="svn:$(svn info | sed -n -e '/^Revision: \([0-9]*\).*$/s//\1/p') "
-    else
+    s="$(svn info 2>/dev/null | sed -n -e '/^Revision: \([0-9]*\).*$/s//\1/p')"
+    if [[ -z $s ]] ; then
         s=$(__git_ps1 "git:%s")
+    else
+        s="svn:$s"
     fi
     [ -z "$s" ] || echo -n "$s"
-}
-
-function python_info() {
-    PP=$(pyenv version)
-    PP=${PP//$HOME/\~}
-    PP=${PP//set by /}
-    if [ ! -z $VIRTUAL_ENV ]; then
-        PP="@$(basename $VIRTUAL_ENV) $PP"
-    fi
-    echo -n $PP
 }
 
 function git-setup() {
     git config --global user.name "Pranay Kanwar"
     git config --global user.email "pranay.kanwar@gmail.com"
-    git config --global color.ui auto
-    git config --global core.pager cat
 }
 
 function git-update-submodules() {
@@ -140,15 +124,18 @@ case $TERM in
         export GIT_PS1_SHOWUNTRACKEDFILES=1
 
         R="\033[0;00m"
-        S="\033[0;36m"
+        S="\033[1;31m"
         T="\033[0;33m"
-        export PS1="\[${R}\]\[${S}\]‣\[${R}\] "
+        V="\033[0;33m\033[40m"
+        F="\033[0;31m\033[40m"
+
+        export PS1="\[${R}\]\[${F}\]\${?##0}\[${R}\]\[${V}\]\$(vcs_info)\[${R}\]\[${S}\]∴\[${R}\] "
         export PS2="   \[${T}\]‣\[${R}\] "
         export PS3=${PS2}
         export PS4=${PS2}
 
         function prompt_cmd() {
-            echo -ne "\033]0;[${USER}@${HOSTNAME%%.*}][$?][${PWD/#$HOME/~}][$(vcs_info)][$(~/.rvm/bin/rvm-prompt)]\007"
+            echo -ne "\033]0;${USER}@${HOSTNAME%%.*}\007"
             history -a &> /dev/null
         }
 
