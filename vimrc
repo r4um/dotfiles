@@ -99,7 +99,6 @@ imap <Leader>s <C-o>:setlocal spell!<CR>
 nmap <Leader>s :setlocal spell!<CR>
 
 " Ultisnips
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
 let g:UltiSnipsExpandTrigger="<c-j>"
 
 " eclim
