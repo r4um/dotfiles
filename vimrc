@@ -14,14 +14,13 @@ set noswapfile
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
-  set background=dark
+  set background=light
   let g:rainbow_active = 1
   let g:solarized_termtrans = 1
   let g:solarized_visibility = 'high'
   let g:solarized_bold = 0
   let g:solarized_italic = 0
   colorscheme solarized
-  highlight clear SignColumn
 endif
 
 if has("autocmd")
