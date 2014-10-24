@@ -102,6 +102,7 @@ nmap <Leader>s :setlocal spell!<CR>
 let g:UltiSnipsExpandTrigger="<c-j>"
 
 " eclim
+let g:EclimCompletionMethod = 'omnifunc'
 let g:EclimProjectTreeAutoOpen=0
 let g:EclimProjectTreeExpandPathOnOpen=1
 let g:EclimProjectTreeSharedInstance=1
