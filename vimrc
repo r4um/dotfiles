@@ -125,3 +125,6 @@ nnoremap <leader>to :TernDoc<CR>
 nnoremap <leader>tt :TernType<CR>
 nnoremap <leader>tr :TernRefs<CR>
 nnoremap <leader>te :TernRename<CR>
+
+let g:indentLine_noConcealCursor = 1
+let b:indentLine_ConcealOptionSet = 1
