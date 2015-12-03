@@ -20,7 +20,7 @@ if &t_Co > 2 || has("gui_running")
   let g:solarized_visibility = 'high'
   let g:solarized_bold = 0
   let g:solarized_italic = 0
-  colorscheme solarized
+  colorscheme zenburn
 endif
 
 if has("autocmd")
@@ -53,7 +53,7 @@ set laststatus=2
 set ttimeoutlen=50
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'zenburn'
 
 let mapleader = ","
 
