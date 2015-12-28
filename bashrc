@@ -6,17 +6,6 @@ if [ -f /etc/profile ];then
     . /etc/profile
 fi
 
-if [ -e /usr/local/bin/brew ]; then
-    BREW_PREFIX=$(brew --prefix)
-    if [ -f $BREW_PREFIX/etc/bash_completion ]; then
-        . $BREW_PREFIX/etc/bash_completion
-    fi
-fi
-
-[[ -s /etc/bash_completion ]] && source /etc/bash_completion
-
-[[ -s /usr/local/share/bash-completion/bash_completion ]] && source /usr/local/share/bash-completion/bash_completion
-
 if [ -e "$HOME/src/c/ssh-authsock-hack/ssh-authsock-hack.so" ]; then
     export LD_PRELOAD="$HOME/src/c/ssh-authsock-hack/ssh-authsock-hack.so":$LD_PRELOAD
 fi
@@ -149,3 +138,13 @@ do
     source $E
 done
 shopt -u nullglob
+
+if [ -e /usr/local/bin/brew ]; then
+    BREW_PREFIX=$(brew --prefix)
+    if [ -f $BREW_PREFIX/etc/bash_completion ]; then
+        . $BREW_PREFIX/etc/bash_completion
+    fi
+fi
+
+[[ -s /etc/bash_completion ]] && source /etc/bash_completion
+[[ -s /usr/local/share/bash-completion/bash_completion ]] && source /usr/local/share/bash-completion/bash_completion
