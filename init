@@ -7,7 +7,7 @@ myhome = ENV['HOME']
 for entry in Dir.entries(mydir)
   next if skip.member? entry
   src = File.join(mydir, entry)
-  next if src =~ /^_/
+  next if entry =~ /^_/
   dst = File.join(myhome, entry.insert(0,"."))
   if File.symlink? dst or not File.exists? dst then
     File.unlink dst if File.exists? dst
@@ -17,6 +17,8 @@ for entry in Dir.entries(mydir)
     puts "Refusing to touch #{dst}, not a symlink"
   end
 end
-File.symlink mydir, File.join(myhome, '.dotfiles')
+
+dshort = File.join(myhome, '.dotfiles')
+File.symlink mydir, dshort unless File.exists? dshort
 
 # vim: set ft=ruby et ts=2 sw=2 tw=79:
