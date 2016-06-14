@@ -1,0 +1,18 @@
+case $OSTYPE in
+    darwin*)
+        alias ls='ls -F'
+    ;;
+    linux*)
+        alias ls='ls -F --color'
+    ;;
+esac
+
+alias gti=git
+alias g=git
+alias ll='ls -alrth'
+alias e='emacsclient -t'
+alias sv='/usr/lib/vmware/bin/launcher.sh /usr/lib/vmware/lib /usr/lib/vmware/bin/vmware /usr/lib/vmware/libconf'
+alias tl='tmux list-sessions'
+alias ta='exec tmux attach-session'
+
+# vim: set et ft=sh ts=4 sw=4 tw=0:

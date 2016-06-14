@@ -1,0 +1,42 @@
+function vcs_info() {
+    local s=
+    s="$(svn info 2>/dev/null | sed -n -e '/^Revision: \([0-9]*\).*$/s//\1/p')"
+    if [[ -z $s ]] ; then
+        s=$(__git_ps1 "git:%s")
+    else
+        s="svn:$s"
+    fi
+    [ -z "$s" ] || echo -n "$s"
+}
+
+case $TERM in
+     screen*|ansi*|xterm*|rxvt*)
+
+        export GIT_PS1_SHOWDIRTYSTATE=1
+        export GIT_PS1_SHOWUPSTREAM="auto"
+        export GIT_PS1_SHOWSTASHSTATE=1
+        export GIT_PS1_SHOWUNTRACKEDFILES=1
+
+        R="\033[0;00m"
+        S="\033[1;31m"
+        T="\033[0;33m"
+        V="\033[0;34m"
+        F="\033[1;31m"
+        B="\033[0;36m"
+        G="\033[0;32m"
+
+        export PS1="\[${R}\]\[${F}\]\${?##0}\[${R}\]\[${V}\]\$(vcs_info)\[${R}\]\[${B}\]⚡\[${R}\] "
+        export PS2="\[${B}\]...  ⚡\[${R}\] "
+        export PS3=${PS2}
+        export PS4=${PS2}
+
+        function prompt_cmd() {
+            echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:$PWD $(vcs_info)\007"
+            history -a &> /dev/null
+        }
+
+        export PROMPT_COMMAND=prompt_cmd
+     ;;
+esac
+
+# vim: set et ft=sh ts=4 sw=4 tw=0:

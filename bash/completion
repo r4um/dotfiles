@@ -1,0 +1,24 @@
+if [ -e /usr/local/bin/brew ]; then
+    BREW_PREFIX=$(brew --prefix)
+    if [ -f $BREW_PREFIX/etc/bash_completion ]; then
+        . $BREW_PREFIX/etc/bash_completion
+    fi
+fi
+
+BASH_COMPLETIONS=(/etc/bash_completion  /usr/local/share/bash-completion/bash_completion /usr/share/git/completion/git-prompt.sh /usr/share/doc/pkgfile/command-not-found.bash /usr/share/bash-completion/completions/dkms)
+for F in "${BASH_COMPLETIONS[@]}"; do
+    if [[ -s $F ]]; then
+        source $F
+    fi
+done
+
+shopt -s nullglob
+for E in ~/.bash_completion.d/*
+do
+    source $E
+done
+shopt -u nullglob
+
+complete -F _known_hosts nc curl wget socat aria2
+
+# vim: set et ft=sh ts=4 sw=4 tw=0:

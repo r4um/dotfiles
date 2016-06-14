@@ -1,0 +1,12 @@
+export PYTHONSTARTUP=~/.pyrc
+
+function rm-pyc() {
+    find . -type f -name '*.pyc'  -print0 | xargs -0 rm -fv
+}
+
+if [ -d ~/.pyenv/bin ]; then
+    export PATH=$HOME/.pyenv/bin:$PATH
+    eval "$(pyenv init -)"
+fi
+
+# vim: set et ft=sh ts=4 sw=4 tw=0:

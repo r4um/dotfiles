@@ -1,0 +1,5 @@
+if [ -e "$HOME/src/c/ssh-authsock-hack/ssh-authsock-hack.so" ]; then
+    export LD_PRELOAD="$HOME/src/c/ssh-authsock-hack/ssh-authsock-hack.so":$LD_PRELOAD
+fi
+
+# vim: set et ft=sh ts=4 sw=4 tw=0:

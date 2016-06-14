@@ -1,0 +1,5 @@
+export GO15VENDOREXPERIMENT=1
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+[[ -z "$GOROOT" ]] || export GOBIN=$GOROOT/bin
+
+# vim: set et ft=sh ts=4 sw=4 tw=0:

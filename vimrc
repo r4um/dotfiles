@@ -51,6 +51,7 @@ set listchars=tab:».,trail:.,extends:#,nbsp:.
 set list
 set laststatus=2
 set ttimeoutlen=50
+set paste
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'zenburn'

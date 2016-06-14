@@ -1,0 +1,25 @@
+function git-setup() {
+    git config --global user.name "Pranay Kanwar"
+    git config --global user.email "pranay.kanwar@gmail.com"
+    git config --global alias.brances  'branch -a'
+    git config --global alias.tags  'tag'
+    git config --global alias.stashes  'stash list'
+    git config --global alias.unstage  'reset -q HEAD --'
+    git config --global alias.discard  'checkout --'
+    git config --global alias.uncommit  'reset --mixed HEAD~'
+    git config --global alias.amend  'commit --amend'
+    git config --global alias.nevermind  '!git reset --hard HEAD && git clean -d -f'
+    git config --global alias.graph  'log --graph -10 --branches --remotes --tags  --format'
+    git config --global alias.precommit  'diff --cached --diff-algorithm'
+    git config --global alias.last 'log -1 HEAD'
+    git config --global core.pager 'diff-highlight | less'
+}
+
+function git-update-submodules() {
+    git submodule init && git submodule update
+    for M in $(git submodule  --quiet foreach 'echo $name') ; do
+        git config submodule.$M.ignore untracked
+    done
+}
+
+# vim: set et ft=sh ts=4 sw=4 tw=0:

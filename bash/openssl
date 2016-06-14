@@ -1,0 +1,75 @@
+function gen-csr-pk() {
+    D=$1
+    [[ -z $D ]] && D=$(date +%s)
+    openssl req -newkey rsa:2048 -nodes -keyout $D.key -out $D.csr
+}
+
+function gen-csr() {
+    P=$1
+    D=`basename $P`.csr
+    openssl req -key $P -new -out $D
+}
+
+function extract-csr() {
+    D=`basename $1`
+    openssl x509 -in $D.crt -signkey $D.key -x509toreq -out $D.csr
+}
+
+function  gen-crt-pk() {
+    D=$1
+    [[ -z $D ]] && D=$(date +%s)
+    openssl req -newkey rsa:2048 -nodes -keyout $D.key -x509 -days 365 -out $D.crt
+}
+
+function gen-crt() {
+    P=$1
+    D=`basename $P`.csr
+    openssl req -key $P -new -x509 -days 365 -out $D
+}
+
+function view-csr() {
+    openssl req -text -noout -verify -in $1
+}
+
+function view-certs() {
+    openssl x509 -text -noout -in "$1"
+}
+
+function view-certs-der() {
+    openssl x509 -in $1 -inform der -text -noout
+}
+
+function verify-cert-ca() {
+    openssl verify -verbose -CAFile "$1" "$2"
+}
+
+function verify-pk() {
+    openssl rsa -check -in "$1"
+}
+
+function verify-pk-csr() {
+    D=$(basename $1)
+    openssl rsa -noout -modulus -in $D.key | openssl md5
+    openssl x509 -noout -modulus -in $D.crt | openssl md5
+    openssl req -noout -modulus -in $D.csr | openssl md5
+}
+
+function crt-pem-to-der() {
+    D=$(basename $1)
+    openssl x509 -in $D.crt -outform der -out $D.der
+}
+
+function crt-der-to-pem() {
+    D=$(basename $1)
+    openssl x509 -in $D.der -outform pem -out $D.pem
+}
+
+function crt-pub-key() {
+    openssl x509 -in "$1" -pubkey -noout | openssl enc -base64 -d | xxd -ps
+}
+
+function csr-pub-key() {
+    openssl req -in "$1" -pubkey -noout | openssl enc -base64 -d | xxd -ps
+}
+
+# vim: set et ft=sh ts=4 sw=4 tw=0:
