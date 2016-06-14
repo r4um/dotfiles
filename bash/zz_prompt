@@ -31,7 +31,7 @@ case $TERM in
         export PS4=${PS2}
 
         function prompt_cmd() {
-            echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:$PWD $(vcs_info)\007"
+            echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:$PWD\007"
             history -a &> /dev/null
         }
 
