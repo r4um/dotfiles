@@ -1,0 +1,31 @@
+printf "\e]1337;SetBadgeFormat=%s\a" $(echo -n "\(user.BD)"| base64)
+
+function set_iterm2_warn_badge {
+osascript &>/dev/null <<EOF
+tell application "iTerm2"
+    tell current session of current window
+        set variable named "user.BD" to "☣ 💰 ☣ "
+    end tell
+end tell
+EOF
+}
+
+function set_iterm2_shit_badge {
+osascript &>/dev/null <<EOF
+tell application "iTerm2"
+    tell current session of current window
+        set variable named "user.BD" to "💩💩💩 "
+    end tell
+end tell
+EOF
+}
+
+function set_iterm2_empty_badge {
+osascript &>/dev/null <<EOF
+tell application "iTerm2"
+    tell current session of current window
+        set variable named "user.BD" to ""
+    end tell
+end tell
+EOF
+}
