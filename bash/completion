@@ -5,7 +5,7 @@ if [ -e /usr/local/bin/brew ]; then
     fi
 fi
 
-BASH_COMPLETIONS=(/etc/bash_completion  /usr/local/share/bash-completion/bash_completion /usr/share/git/completion/git-prompt.sh /usr/share/doc/pkgfile/command-not-found.bash /usr/share/bash-completion/completions/dkms)
+BASH_COMPLETIONS=(/etc/bash_completion  /usr/local/share/bash-completion/bash_completion /home/linuxbrew/.linuxbrew/etc/bash_completion /usr/share/git/completion/git-prompt.sh /usr/share/doc/pkgfile/command-not-found.bash /usr/share/bash-completion/completions/dkms)
 for F in "${BASH_COMPLETIONS[@]}"; do
     if [[ -s $F ]]; then
         source $F
