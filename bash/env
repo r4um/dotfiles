@@ -2,14 +2,9 @@ export CLICOLOR=1
 export EDITOR=vim
 export PATH=~/bin:/usr/local/share/python:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:$PATH
 
-if [[ -d $HOME/.linuxbrew ]]; then
-    export PATH="$HOME/.linuxbrew/bin:$PATH"
-    export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
-fi
-
 alias tl='tmux list-sessions'
 alias ta='exec tmux attach-session'
+
 export RANGE_HOST=localhost
 export RANGE_PORT=8080
 
