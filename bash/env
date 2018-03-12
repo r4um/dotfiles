@@ -1,6 +1,6 @@
 export CLICOLOR=1
 export EDITOR=vim
-export PATH=~/bin:/usr/local/share/python:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:$PATH
+export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:$PATH
 
 alias tl='tmux list-sessions'
 alias ta='exec tmux attach-session'
