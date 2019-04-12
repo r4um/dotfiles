@@ -1,5 +1,2 @@
-if [[ -d $HOME/.linuxbrew ]]; then
-   export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
-   export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-   export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
-fi
+test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
