@@ -68,6 +68,7 @@
    semantic-web
    shell-scripts
    sml
+   spell-checking
    sql
    swift
    typescript
