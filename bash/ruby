@@ -1,6 +1,8 @@
 export PATH=$HOME/.rvm/bin:$PATH
 
+# shellcheck source=/dev/null
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+# shellcheck source=/dev/null disable=SC2154
+[[ -r $rvm_path/scripts/completion ]] && . "$rvm_path/scripts/completion"
 
 # vim: set et ft=sh ts=4 sw=4 tw=0:

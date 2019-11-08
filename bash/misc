@@ -1,5 +1,5 @@
 function my-procs() {
-    ps -o pid,ppid,nice,ttytart,%cpu,time,%mem,vsz,rsstat,wchan,comm -U $USER
+    ps -o pid,ppid,nice,ttytart,%cpu,time,%mem,vsz,rss,stat,wchan,comm -U "$USER"
 }
 
 # vim: set et ft=sh ts=4 sw=4 tw=0:

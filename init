@@ -1,24 +1,49 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-mydir = File.dirname(File.expand_path($0))
-skip = [".", "..", ".git",".gitignore", ".gitmodules", "init", "README"]
+mydir = File.dirname(File.expand_path($PROGRAM_NAME))
+
+skip = ['.', '..', '.git', '.gitignore', '.gitmodules', 'init',
+        'README', 'config']
+
 myhome = ENV['HOME']
 
-for entry in Dir.entries(mydir)
+Dir.entries(mydir).each do |entry|
   next if skip.member? entry
+
   src = File.join(mydir, entry)
   next if entry =~ /^_/
-  dst = File.join(myhome, entry.insert(0,"."))
-  if File.symlink? dst or not File.exists? dst then
-    File.unlink dst if File.exists? dst
+
+  dst = File.join(myhome, entry.insert(0, '.'))
+  if File.symlink?(dst) || !File.exist?(dst)
+    File.unlink dst if File.exist? dst
     File.symlink(src, dst)
     puts "#{src} -> #{dst}"
   else
-    puts "Refusing to touch #{dst}, not a symlink"
+    puts "refusing to touch #{dst}, not a symlink"
+  end
+end
+
+# link files in config/ to ~/.config/
+config_src_dir = File.join(mydir, 'config')
+config_dst_dir = File.join(myhome, '.config')
+
+Dir.entries(config_src_dir).each do |entry|
+  next if ['.', '..'].member? entry
+
+  src = File.join(config_src_dir, entry)
+  dst = File.join(config_dst_dir, entry)
+
+  if File.symlink?(dst) || !File.exist?(dst)
+    File.unlink dst if File.exist? dst
+    File.symlink(src, dst)
+    puts "#{src} -> #{dst}"
+  else
+    puts "refusing to touch #{dst}, not a symlink"
   end
 end
 
 dshort = File.join(myhome, '.dotfiles')
-File.symlink mydir, dshort unless File.exists? dshort
+File.symlink mydir, dshort unless File.exist? dshort
 
 # vim: set ft=ruby et ts=2 sw=2 tw=79:

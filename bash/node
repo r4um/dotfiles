@@ -1,5 +1,7 @@
-export NVM_DIR=$HOME/.nvm
-[[ -r $NVM_DIR/nvm.sh ]] && source $NVM_DIR/nvm.sh
-[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+export NVM_DIR="$HOME/.nvm"
+# shellcheck source=/dev/null
+[[ -r $NVM_DIR/nvm.sh ]] && source "$NVM_DIR/nvm.sh"
+# shellcheck source=/dev/null
+[[ -r $NVM_DIR/bash_completion ]] && . "$NVM_DIR/bash_completion"
 
 # vim: set et ft=sh ts=4 sw=4 tw=0:

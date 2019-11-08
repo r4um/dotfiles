@@ -1,4 +1,4 @@
-printf "\e]1337;SetBadgeFormat=%s\a" $(echo -n "\(user.BD)"| base64)
+printf "\e]1337;SetBadgeFormat=%s\a" "$(echo -n "\(user.BD)"| base64)"
 
 function set_iterm2_warn_badge {
 osascript &>/dev/null <<EOF
@@ -29,3 +29,5 @@ tell application "iTerm2"
 end tell
 EOF
 }
+
+# vim: set et ft=sh ts=4 sw=4 tw=0:

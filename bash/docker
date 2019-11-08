@@ -1,5 +1,6 @@
 function rm-docker-containers() {
-    docker rm -v $(docker ps -aq -f status=exited)
+    mapfile -t dargs  < <(docker ps -aq -f status=exited)
+    docker rm -v "${dargs[@]}"
 }
 
 # vim: set et ft=sh ts=4 sw=4 tw=0:

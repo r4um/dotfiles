@@ -17,7 +17,9 @@ function git-setup() {
 
 function git-update-submodules() {
     git submodule init && git submodule update
+    # shellcheck disable=SC2016
     for M in $(git submodule  --quiet foreach 'echo $name') ; do
+        # shellcheck disable=SC2086
         git config submodule.$M.ignore untracked
     done
 }
