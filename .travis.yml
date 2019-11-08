@@ -1,3 +1,3 @@
 language: shell
 script:
-  - bash -c 'shopt -s globstar nullglob; shellcheck bashrc bash/*'
+  - bash -c 'shopt -s globstar nullglob; shellcheck --shell=bash bashrc bash/*'
