@@ -2,6 +2,12 @@
 
 [ -z "$PS1" ] && return
 
+#load home brew and bash completion first
+# shellcheck source=/dev/null
+source "$HOME/.bash/aa_linuxbrew"
+# shellcheck source=/dev/null
+source "$HOME/.bash/completion"
+
 if [ -f /etc/profile ];then
     #shellcheck disable=SC1091
     . /etc/profile

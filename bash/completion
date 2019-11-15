@@ -1,13 +1,26 @@
-if [ -e /usr/local/bin/brew ]; then
+# load bash completion, try homebrew else others
+if command -v brew &>/dev/null; then
     BREW_PREFIX=$(brew --prefix)
     if [ -f "$BREW_PREFIX/etc/bash_completion" ]; then
         # shellcheck source=/dev/null
         . "$BREW_PREFIX/etc/bash_completion"
     fi
+else
+    BASH_COMPLETIONS=(/etc/bash_completion /usr/local/share/bash-completion/bash_completion)
+    for F in "${BASH_COMPLETIONS[@]}"; do
+        if [[ -s $F ]]; then
+            # shellcheck source=/dev/null
+            source "$F"
+            break
+        fi
+    done
 fi
 
-BASH_COMPLETIONS=(/etc/bash_completion  /usr/local/share/bash-completion/bash_completion /home/linuxbrew/.linuxbrew/etc/bash_completion /usr/share/git/completion/git-prompt.sh /usr/share/doc/pkgfile/command-not-found.bash /usr/share/bash-completion/completions/dkms)
-for F in "${BASH_COMPLETIONS[@]}"; do
+EXTRA_BASH_COMPLETIONS=(/usr/share/git/completion/git-prompt.sh
+                        /usr/share/doc/pkgfile/command-not-found.bash
+                        /usr/share/bash-completion/completions/dkms)
+
+for F in "${EXTRA_BASH_COMPLETIONS[@]}"; do
     if [[ -s $F ]]; then
         # shellcheck source=/dev/null
         source "$F"
