@@ -18,7 +18,9 @@ umask 0022
 shopt -s nullglob
 for B in ~/.bash/*
 do
-    # shellcheck source=/dev/null
-    source "$B"
+    if [ -x "$B" ]; then
+      # shellcheck source=/dev/null
+      source "$B"
+    fi
 done
 shopt -u nullglob
