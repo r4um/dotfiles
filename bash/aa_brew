@@ -1,4 +1,6 @@
 test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+test -x /usr/local/bin/brew && eval "$(/usr/local/bin/brew shellenv)"
+
 # vim: set et ft=sh ts=4 sw=4 tw=0:

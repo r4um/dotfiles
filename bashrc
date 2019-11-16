@@ -4,7 +4,7 @@
 
 #load home brew and bash completion first
 # shellcheck source=/dev/null
-source "$HOME/.bash/aa_linuxbrew"
+source "$HOME/.bash/aa_brew"
 # shellcheck source=/dev/null
 source "$HOME/.bash/completion"
 
