@@ -44,10 +44,20 @@ function setup_prompt() {
      esac
 }
 
+function set_term_title() {
+    case $TERM in
+        screen*|ansi*|xterm*|rxvt*)
+            echo -ne "\033]0;${USER}@${HOSTNAME%%.*}: ${PWD/#$HOME/\~}\007"
+        ;;
+     esac
+}
+
 if command -v starship > /dev/null; then
     eval "$(starship init bash)"
 else
     setup_prompt
 fi
+
+export PROMPT_COMMAND="${PROMPT_COMMAND%;};set_term_title"
 
 # vim: set et ft=sh ts=4 sw=4 tw=0:
