@@ -4,7 +4,7 @@ function rm-pyc() {
     find . -type f -name '*.pyc'  -print0 | xargs -0 rm -fv
 }
 
-if [ -d ~/.pyenv/bin ] || [ command -v pyenv > /dev/null ]; then
+if [[ -d ~/.pyenv/bin ]] ||  command -v pyenv > /dev/null; then
     export PATH=$HOME/.pyenv/bin:$PATH
     eval "$(pyenv init -)"
     export PYENV_VIRTUALENV_DISABLE_PROMPT=1
