@@ -33,13 +33,6 @@ function setup_prompt() {
             export PS2="\[${BY}\]  ❯\[${R}\] "
             export PS3=${PS2}
             export PS4=${PS2}
-
-            function prompt_cmd() {
-                echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:$PWD\007"
-                history -a &> /dev/null
-            }
-
-            export PROMPT_COMMAND=prompt_cmd
         ;;
      esac
 }
