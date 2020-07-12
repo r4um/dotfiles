@@ -63,7 +63,7 @@
    restructuredtext
    ruby
    rust
-   scala
+   (scala :variables scala-backend 'scala-metals)
    scheme
    semantic-web
    shell-scripts
@@ -78,3 +78,9 @@
    yang
    )
  )
+
+(setq-default dotspacemacs-default-font '("Rec Mono Casual"
+                                          :size 14
+                                          :weight extra-light
+                                          :width normal
+                                          :powerline-scale 1.0))
