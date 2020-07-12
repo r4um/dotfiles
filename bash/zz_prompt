@@ -46,11 +46,12 @@ function set_term_title() {
 }
 
 if command -v starship > /dev/null; then
+    starship_precmd_user_func="set_term_title"
     eval "$(starship init bash)"
 else
     setup_prompt
+    export PROMPT_COMMAND="${PROMPT_COMMAND%;};set_term_title"
 fi
 
-export PROMPT_COMMAND="${PROMPT_COMMAND%;};set_term_title"
 
 # vim: set et ft=sh ts=4 sw=4 tw=0:
