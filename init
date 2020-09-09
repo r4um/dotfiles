@@ -3,7 +3,7 @@
 
 mydir = File.dirname(File.expand_path($PROGRAM_NAME))
 
-skip = ['.', '..', '.git', '.gitignore', '.gitmodules', 'init',
+skip = ['.', '..', '.git', '.gitignore', '.gitmodules', '.travis.yml', 'init',
         'README', 'config']
 
 myhome = ENV['HOME']
