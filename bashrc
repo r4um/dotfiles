@@ -24,5 +24,3 @@ do
     fi
 done
 shopt -u nullglob
-export VOLTA_HOME="/Users/pkanwar/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
