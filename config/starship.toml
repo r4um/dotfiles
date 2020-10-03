@@ -1,37 +1,41 @@
+format = """\
+    $username\
+    $hostname\
+    $kubernetes\
+    $directory\
+    $git_branch\
+    $git_state\
+    $git_status\
+    $package\
+    $dotnet\
+    $golang\
+    $java\
+    $nodejs\
+    $python\
+    $ruby\
+    $rust\
+    $nix_shell\
+    $conda\
+    $aws\
+    $env_var\
+    $cmd_duration\
+    $line_break\
+    $jobs\
+    $status\
+    $character\
+"""
+
 add_newline = false
-
-[character]
-symbol = "❯❯"
-vicmd_symbol = "❮❮"
-
-prompt_order = [
-    "username",
-    "hostname",
-    "kubernetes",
-    "directory",
-    "git_branch",
-    "git_state",
-    "git_status",
-    "package",
-    "dotnet",
-    "golang",
-    "java",
-    "nodejs",
-    "python",
-    "ruby",
-    "rust",
-    "nix_shell",
-    "conda",
-    #"memory_usage",
-    "aws",
-    "env_var",
-    "cmd_duration",
-    "line_break",
-    "jobs",
-    #"battery",
-    #"time",
-    "character",
-]
 
 [kubernetes]
 disabled = false
+
+[character]
+success_symbol = "[❯](bold blue)[❯](bold yellow)"
+error_symbol = "[❯](bold blue)[❯](bold yellow)"
+vimcmd_symbol = "[❯❯](bold green)"
+
+[status]
+disabled = false
+style = "bold red"
+symbol = ""

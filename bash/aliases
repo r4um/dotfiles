@@ -11,6 +11,7 @@ alias gti=git
 alias g=git
 alias ll='ls -alrth'
 alias e='emacsclient -t'
+alias n='nvim'
 alias sv='/usr/lib/vmware/bin/launcher.sh /usr/lib/vmware/lib /usr/lib/vmware/bin/vmware /usr/lib/vmware/libconf'
 alias tl='tmux list-sessions'
 alias ta='exec tmux attach-session'
