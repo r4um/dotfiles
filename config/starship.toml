@@ -31,9 +31,9 @@ add_newline = false
 disabled = false
 
 [character]
-success_symbol = "[❯](bold blue)[❯](bold yellow)"
-error_symbol = "[❯](bold blue)[❯](bold yellow)"
-vimcmd_symbol = "[❯❯](bold green)"
+success_symbol = "[›](bold blue)[›](bold yellow)"
+error_symbol = "[›](bold blue)[›](bold yellow)"
+vimcmd_symbol = "[›](bold green)"
 
 [status]
 disabled = false

@@ -1,4 +1,4 @@
-(setq-default dotspacemacs-themes '(zenburn))
+(setq-default dotspacemacs-themes '(spacemacs-dark))
 (setq dotspacemacs-additional-packages '(gradle-mode))
 (setq-default
  dotspacemacs-configuration-layers
