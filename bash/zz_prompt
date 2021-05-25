@@ -29,7 +29,7 @@ function setup_prompt() {
             BG="\033[1;32m"
             BY="\033[1;33m"
 
-            export PS1="\[${R}\]\[${F}\]\${?##0}\[${R}\]\[${V}\]\$(vcs_info)\[${R}\]\[${BB}\]❯\[${BG}\]❯\[${R}\] "
+            export PS1="\[${R}\]\[${F}\]\${?##0}\[${R}\]\[${V}\]\$(vcs_info)\[${R}\]\[${BB}\]›\[${BG}\]›\[${R}\] "
             export PS2="\[${BY}\]  ❯\[${R}\] "
             export PS3=${PS2}
             export PS4=${PS2}
