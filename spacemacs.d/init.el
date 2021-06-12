@@ -1,4 +1,4 @@
-(setq-default dotspacemacs-themes '(spacemacs-dark))
+(setq-default dotspacemacs-themes '(atom-one-dark))
 (setq dotspacemacs-additional-packages '(gradle-mode))
 (setq-default
  dotspacemacs-configuration-layers
@@ -78,9 +78,3 @@
    yang
    )
  )
-
-(setq-default dotspacemacs-default-font '("Rec Mono Casual"
-                                          :size 14
-                                          :weight extra-light
-                                          :width normal
-                                          :powerline-scale 1.0))
