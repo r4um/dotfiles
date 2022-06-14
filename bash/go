@@ -2,5 +2,5 @@ export GO15VENDOREXPERIMENT=1
 # shellcheck source=/dev/null
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 [[ -z "$GOROOT" ]] || export GOBIN=$GOROOT/bin
-
+[[ -d "$HOME/go/bin" ]] && export PATH="$PATH:$HOME/go/bin"
 # vim: set et ft=sh ts=4 sw=4 tw=0:
